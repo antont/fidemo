@@ -211,3 +211,5 @@ var update = function() {
 };
 
 update();
+
+debugObject(65, 40);
