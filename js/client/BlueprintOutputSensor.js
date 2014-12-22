@@ -562,10 +562,13 @@
       
       query = spacepad(pin.name, 6) + direction;
 
-      var url = "http://www.pubtrans.it/hsl/routes?lines=" + encodeURIComponent(query);
+      var url = "http://www.corsproxy.com/www.pubtrans.it/hsl/routes?lines=" + encodeURIComponent(query);
       console.log("hsl query url " + url);
-      if (self.currentRouteLine)
+      if (self.currentRouteLine) {
           self.currentRouteLine.visible = false;
+          //TODO: restore normal color to sel. NOTE: currentRouteLine is never set, this is now unused?
+      }
+      pin.children[1].material.color.setRGB(1, 0, 0);
       var callback = function(data) {
           if (!data.features || !data.features[0].properties || !data.features[0].geometry) {
               console.info("bad hsl route data");
